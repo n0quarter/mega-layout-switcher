@@ -15,6 +15,13 @@ struct KeyboardLayout {
         return Unmanaged<CFString>.fromOpaque(pointer).takeUnretainedValue() as String
     }
 
+    /// Spellchecker language, e.g. "en" or "uk".
+    var language: String {
+        guard let pointer = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages) else { return "" }
+        let languages = Unmanaged<CFArray>.fromOpaque(pointer).takeUnretainedValue() as? [String]
+        return languages?.first ?? ""
+    }
+
     var isCyrillic: Bool {
         let letterA = TypedKey(keyCode: UInt16(kVK_ANSI_A), shift: false, capsLock: false)
         guard let scalar = character(for: letterA).unicodeScalars.first else { return false }

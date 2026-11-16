@@ -6,12 +6,13 @@ import Carbon
 struct TypedText {
     var keys: [TypedKey] = []
     var layoutID: String?
+    var wasJustConverted = false
 }
 
 /// Watches the keyboard and calls `onOptionTap` when Option is tapped alone.
 final class KeyWatcher {
-    /// Receives the typed text, returns the layout ID it was converted to (nil = nothing happened).
-    var onOptionTap: (TypedText) -> String? = { _ in nil }
+    /// Receives the typed text, returns it after conversion (nil = nothing happened).
+    var onOptionTap: (TypedText) -> TypedText? = { _ in nil }
 
     private static let optionTapMaxDuration: TimeInterval = 0.3
     private static let maxPauseBetweenKeys: TimeInterval = 3
@@ -81,10 +82,13 @@ final class KeyWatcher {
         lastKeyTime = now
 
         let keyCode = Int(event.getIntegerValueField(.keyboardEventKeycode))
+        typed.wasJustConverted = false
         if keyCode == kVK_Delete {
             if !typed.keys.isEmpty { typed.keys.removeLast() }
         } else if Self.isPrintable(keyCode) {
-            if typed.keys.isEmpty { typed.layoutID = KeyboardLayout.current().id }
+            // You switched layout yourself (Caps Lock): what came before was intended, start fresh.
+            let layoutID = KeyboardLayout.current().id
+            if typed.layoutID != layoutID { typed = TypedText(layoutID: layoutID) }
             typed.keys.append(TypedKey(
                 keyCode: UInt16(keyCode),
                 shift: flags.contains(.maskShift),
@@ -110,7 +114,7 @@ final class KeyWatcher {
             optionDownTime = otherModifiersHeld ? nil : now
         } else if let downTime = optionDownTime, now - downTime < Self.optionTapMaxDuration {
             optionDownTime = nil
-            if let newLayoutID = onOptionTap(typed) { typed.layoutID = newLayoutID }
+            if let converted = onOptionTap(typed) { typed = converted }
         } else {
             optionDownTime = nil
         }

@@ -5,6 +5,7 @@ let package = Package(
     name: "MegaSwitcher",
     platforms: [.macOS(.v14)],
     targets: [
-        .executableTarget(name: "MegaSwitcher", path: "Sources/MegaSwitcher")
+        .executableTarget(name: "MegaSwitcher", path: "Sources/MegaSwitcher"),
+        .testTarget(name: "MegaSwitcherTests", dependencies: ["MegaSwitcher"], path: "Tests/MegaSwitcherTests"),
     ]
 )
