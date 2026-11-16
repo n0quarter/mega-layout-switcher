@@ -1,5 +1,5 @@
 import Testing
-@testable import MegaSwitcher
+@testable import MegaLayoutSwitcher
 
 // Uses the real layouts installed on this Mac (U.S. + Ukrainian) and the real macOS spellchecker.
 // Each case: what appears on screen → what one Option tap should turn it into.

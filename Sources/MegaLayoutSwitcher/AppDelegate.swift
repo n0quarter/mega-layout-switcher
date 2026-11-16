@@ -7,7 +7,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.image = NSImage(systemSymbolName: "keyboard", accessibilityDescription: "MegaSwitcher")
+        statusItem.button?.image = NSImage(systemSymbolName: "keyboard", accessibilityDescription: "MegaLayoutSwitcher")
         statusItem.menu = NSMenu()
         statusItem.menu?.delegate = self
 

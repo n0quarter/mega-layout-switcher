@@ -4,13 +4,13 @@ cd "$(dirname "$0")"
 
 [ -f .env ] && source .env
 SIGN_IDENTITY="${SIGN_IDENTITY:-MegaSwitcher Dev}"
-APP=build/MegaSwitcher.app
+APP=build/MegaLayoutSwitcher.app
 
 swift build -c release
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS"
-cp .build/release/MegaSwitcher "$APP/Contents/MacOS/"
+cp .build/release/MegaLayoutSwitcher "$APP/Contents/MacOS/"
 cp Info.plist "$APP/Contents/"
 
 # No -v: an untrusted self-signed cert isn't listed as "valid", but codesign uses it fine.

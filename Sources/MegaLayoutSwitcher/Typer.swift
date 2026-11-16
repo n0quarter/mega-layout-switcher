@@ -8,7 +8,7 @@ enum Typer {
     /// Pause after each posted event. The main knob for Electron apps (Slack, Telegram).
     private static let delayBetweenEvents: useconds_t = 3_000
 
-    private static let queue = DispatchQueue(label: "MegaSwitcher.Typer")
+    private static let queue = DispatchQueue(label: "MegaLayoutSwitcher.Typer")
 
     static func replace(count: Int, with text: String, then completion: @escaping () -> Void) {
         queue.async {

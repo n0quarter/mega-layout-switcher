@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>local.mega-switcher</string>
+    <string>local.mega-layout-switcher</string>
     <key>CFBundleName</key>
-    <string>MegaSwitcher</string>
+    <string>MegaLayoutSwitcher</string>
     <key>CFBundleExecutable</key>
-    <string>MegaSwitcher</string>
+    <string>MegaLayoutSwitcher</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

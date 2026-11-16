@@ -2,10 +2,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "MegaSwitcher",
+    name: "MegaLayoutSwitcher",
     platforms: [.macOS(.v14)],
     targets: [
-        .executableTarget(name: "MegaSwitcher", path: "Sources/MegaSwitcher"),
-        .testTarget(name: "MegaSwitcherTests", dependencies: ["MegaSwitcher"], path: "Tests/MegaSwitcherTests"),
+        .executableTarget(name: "MegaLayoutSwitcher", path: "Sources/MegaLayoutSwitcher"),
+        .testTarget(name: "MegaLayoutSwitcherTests", dependencies: ["MegaLayoutSwitcher"], path: "Tests/MegaLayoutSwitcherTests"),
     ]
 )
