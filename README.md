@@ -1,5 +1,7 @@
 # MegaLayoutSwitcher 🇺🇦
 
+![Typed “надрукувати ЗВА”, tapped Option, got “надрукувати PDF”](docs/demo.gif)
+
 **Free, open-source keyboard layout switcher for macOS, made in Ukraine.**
 Typed `ghbdsn` instead of `привіт`? Tap **Option** and it becomes `привіт`, and the layout switches to Ukrainian. Works both ways: `руддщ` → `hello`.
 
