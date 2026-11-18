@@ -9,9 +9,10 @@ APP=build/MegaLayoutSwitcher.app
 swift build -c release
 
 rm -rf "$APP"
-mkdir -p "$APP/Contents/MacOS"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp .build/release/MegaLayoutSwitcher "$APP/Contents/MacOS/"
 cp Info.plist "$APP/Contents/"
+cp assets/AppIcon.icns "$APP/Contents/Resources/"
 
 # No -v: an untrusted self-signed cert isn't listed as "valid", but codesign uses it fine.
 if security find-identity -p codesigning | grep -q "\"$SIGN_IDENTITY\""; then
